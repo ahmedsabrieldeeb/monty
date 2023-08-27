@@ -44,5 +44,5 @@ typedef struct instruction_s
 
 
 void checkArguments(int num_args, char **list_args);
-int  checkFile(char *file);
+FILE  *checkFile(char *file);
 #endif

@@ -13,14 +13,15 @@
 int main(int argc, char **argv)
 {
 	/* local variables */
-	int file_descriptor __attribute__((unused));
+	FILE * file __attribute__((unused));
 
 	/* checking arguments validity */
 	checkArguments(argc, argv);
 
 	/* opening the file validity */
-	file_descriptor = checkFile(argv[1]);
+	file = checkFile(argv[1]);
 
+	/* parsing he file line by line */
 
 
 

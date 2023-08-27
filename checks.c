@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <fcntl.h>
 #include "monty.h"
 
 /**
@@ -43,17 +42,17 @@ void checkArguments(int num_args, char **list_args)
  * checkFile - check if file is valid
  * @file: file name to be checked
  *
- * Return: file descriptor on success, if not, throws an error
+ * Return: file pointer on success, if not, throws an error
 */
-int checkFile(char *file)
+FILE *checkFile(char *file)
 {
-	int fd = open(file, O_RDONLY);
+	FILE *f = fopen(file, "r");
 
-	if (fd == -1)
+	if (f == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
 
-	return (fd);
+	return (f);
 }
