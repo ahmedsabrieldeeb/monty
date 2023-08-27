@@ -1,0 +1,6 @@
+## done
+1. Implemented checkers for number of arguments passed 
+2. Implemented checkers for valid opening of the file
+
+## to done
+1. Reading the file line by line (parsing)
