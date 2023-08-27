@@ -1,6 +1,8 @@
 ## done
 1. Implemented checkers for number of arguments passed 
 2. Implemented checkers for valid opening of the file
+3. Reading the file line by line (parsing)
+4.  Extracted the first word
 
 ## to done
-1. Reading the file line by line (parsing)
+1. check the instruction
