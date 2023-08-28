@@ -64,7 +64,7 @@ int is_number(char *arg)
 
 	if (arg[0] == '-')
 		i++;
-	
+
 	for (; i < strlen(arg); i++)
 	{
 		if (arg[i] >= '0' && arg[i] <= '9')

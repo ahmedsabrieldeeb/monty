@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 		/* process the line */
-		if(!extractInstruction(buffer, line_number, &stack))
+		if (!extractInstruction(buffer, line_number, &stack))
 		{
 			fclose(file);
 			exit(EXIT_FAILURE);
@@ -66,6 +66,7 @@ int extractInstruction(char *line, unsigned int line_num, stack_t *ps)
 			else
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_num, word);
+				exit(EXIT_FAILURE);
 			}
 		}
 	}
