@@ -10,32 +10,14 @@
  *
  * Return: void
 */
-void checkArguments(int num_args, char **list_args)
+void checkArguments(int num_args, char **list_args __attribute__((unused)))
 {
-	char *file_format;
-	int i = 0;
-
 	/* checking number of arguments */
 	if (num_args != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
-	/* checking format of the file */
-	file_format = list_args[1];
-	while (*(file_format + i) != '\0')
-	{
-		if (*(file_format + i) == '.' && *(file_format + i + 1) == 'm' &&
-			*(file_format + i + 2) == '\0')
-		{
-			return;
-		}
-		i++;
-	}
-
-	fprintf(stderr, "USAGE: monty file\n");
-	exit(EXIT_FAILURE);
 }
 
 /**
