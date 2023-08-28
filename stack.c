@@ -21,6 +21,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack(stack);
+		fclose(file);
 		exit(EXIT_FAILURE);
 	}
 
@@ -28,6 +29,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack(stack);
+		fclose(file);
 		exit(EXIT_FAILURE);
 	}
 	value = atoi(argument);

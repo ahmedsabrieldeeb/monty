@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include "monty.h"
 
+/* global variables */
+FILE *file;
+
 
 /**
  * main - starting point
@@ -14,7 +17,6 @@
 int main(int argc, char **argv)
 {
 	/* local variables */
-	FILE * file __attribute__((unused));
 	char buffer[BUFFER_SIZE];
 	unsigned int line_number = 0;
 	stack_t *stack = NULL;
