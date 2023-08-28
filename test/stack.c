@@ -65,3 +65,15 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		current = current->prev;
 	}
 }
+
+void free_stack(stack_t **ps)
+{
+	stack_t *next;
+
+	while (*ps != NULL)
+	{
+		next = (*ps)->prev;
+		free(*ps);
+		*ps = next;
+	}
+}

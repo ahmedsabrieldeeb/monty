@@ -31,11 +31,12 @@ int main(int argc, char **argv)
 		if (!extractInstruction(buffer, line_number, &stack))
 		{
 			fclose(file);
-			printf("closed\n");
+			free_stack(&stack);
 			exit(EXIT_FAILURE);
 		}
 	}
-
+	fclose(file);
+	free_stack(&stack);
 	return (0);
 }
 
@@ -48,7 +49,6 @@ int main(int argc, char **argv)
 */
 int extractInstruction(char *line, unsigned int line_num, stack_t **ps)
 {
-	/* list */
 	instruction_t opcodes[] = {
 		{"push", push},
 		{"pall", pall}};
@@ -67,10 +67,8 @@ int extractInstruction(char *line, unsigned int line_num, stack_t **ps)
 				return (1);
 			}
 		}
-
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, word);
-		exit(EXIT_FAILURE);
+		return (0);		/* invalid instruction */
 	}
-
-	return (0);
+	return (1);		/* empty line */
 }

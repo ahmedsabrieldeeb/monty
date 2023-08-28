@@ -43,6 +43,7 @@ int extractInstruction(char *line, unsigned int line_num, stack_t **ps);
 /* from stack.c */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **ps);
 
 /* from checks.c */
 int is_number(char *arg);
