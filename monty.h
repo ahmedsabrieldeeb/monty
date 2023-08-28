@@ -1,6 +1,12 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+/* Macros */
+#define BUFFER_SIZE 1024
+
+/* Global */
+
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -18,17 +24,6 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct Stack - struct to access top node and store stack size
- * @top: pointer to the top node
- * @size: number of nodes in the stack
- */
-typedef struct Stack
-{
-	stack_t *top;
-	int size;
-} stack;
-
-/**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
@@ -42,7 +37,16 @@ typedef struct instruction_s
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* from main.c */
+int extractInstruction(char *line, unsigned int line_num, stack_t *ps);
+void createStack(stack_t *ps);
 
+/* from push.c */
+void push_function(stack_t **stack, unsigned int line_number);
+
+/* from checks.c */
+int is_number(char *arg);
 void checkArguments(int num_args, char **list_args);
 FILE  *checkFile(char *file);
+
 #endif

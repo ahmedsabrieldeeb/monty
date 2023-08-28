@@ -56,3 +56,21 @@ FILE *checkFile(char *file)
 
 	return (f);
 }
+
+
+int is_number(char *arg)
+{
+	size_t i = 0;
+
+	if (arg[0] == '-')
+		i++;
+	
+	for (; i < strlen(arg); i++)
+	{
+		if (arg[i] >= '0' && arg[i] <= '9')
+			continue;
+		else
+			return (0);
+	}
+	return (1);
+}
