@@ -20,12 +20,14 @@ void push(stack_t **stack, unsigned int line_number)
 	if (argument == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 
 	if (!is_number(argument))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	value = atoi(argument);
@@ -58,7 +60,7 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 
 	if (current == NULL)
 		return;
-	
+
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
@@ -66,6 +68,12 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	}
 }
 
+/**
+ * free_stack - freeing any memory allocated fro the stack
+ * @ps: a double pointer to the stack itself
+ *
+ * Return: void
+*/
 void free_stack(stack_t **ps)
 {
 	stack_t *next;

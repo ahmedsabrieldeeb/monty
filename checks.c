@@ -57,7 +57,12 @@ FILE *checkFile(char *file)
 	return (f);
 }
 
-
+/**
+ * is_number - check if arg is a number or not
+ * @arg: text should be having numbers
+ *
+ * Return: file pointer on success, if not, throws an error
+*/
 int is_number(char *arg)
 {
 	size_t i = 0;

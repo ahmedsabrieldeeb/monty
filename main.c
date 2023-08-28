@@ -44,6 +44,7 @@ int main(int argc, char **argv)
  * extractInstruction - extracting the instruction from the line
  * @line: line to be parsed
  * @line_num: line number in the file
+ * @ps: a double pointer to the stack itself
  *
  * Return: 0 on success, EXIT_FAILURE on fails
 */
