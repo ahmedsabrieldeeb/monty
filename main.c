@@ -17,12 +17,11 @@ int main(int argc, char **argv)
 	FILE * file __attribute__((unused));
 	char buffer[BUFFER_SIZE];
 	unsigned int line_number = 0;
-	stack_t stack;
+	stack_t *stack = NULL;
 
 	checkArguments(argc, argv);		/* checking arguments validity */
 
 	file = checkFile(argv[1]);		/* opening the file validity */
-	createStack(&stack);
 
 	/* reading the file line by line */
 	while (fgets(buffer, sizeof(buffer), file) != NULL)
@@ -32,10 +31,10 @@ int main(int argc, char **argv)
 		if (!extractInstruction(buffer, line_number, &stack))
 		{
 			fclose(file);
+			printf("closed\n");
 			exit(EXIT_FAILURE);
 		}
 	}
-
 
 	return (0);
 }
@@ -47,11 +46,12 @@ int main(int argc, char **argv)
  *
  * Return: 0 on success, EXIT_FAILURE on fails
 */
-int extractInstruction(char *line, unsigned int line_num, stack_t *ps)
+int extractInstruction(char *line, unsigned int line_num, stack_t **ps)
 {
 	/* list */
 	instruction_t opcodes[] = {
-		{"push", push_function}};
+		{"push", push},
+		{"pall", pall}};
 
 	char *word;
 	size_t i;
@@ -62,26 +62,15 @@ int extractInstruction(char *line, unsigned int line_num, stack_t *ps)
 		for (i = 0; i < sizeof(opcodes) / sizeof(opcodes[0]); i++)
 		{
 			if (strcmp(word, opcodes[i].opcode) == 0)
-				opcodes[i].f(&ps, line_num);
-			else
 			{
-				fprintf(stderr, "L%d: unknown instruction %s\n", line_num, word);
-				exit(EXIT_FAILURE);
+				opcodes[i].f(ps, line_num);
+				return (1);
 			}
 		}
+
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, word);
+		exit(EXIT_FAILURE);
 	}
 
-	return (1);
-}
-
-/**
- * createStack - initialzing a stack
- * @ps: a pointer to a stack data type
- *
- * Return: void
-*/
-void createStack(stack_t *ps)
-{
-	ps->prev = NULL;
-	ps->next = NULL;
+	return (0);
 }

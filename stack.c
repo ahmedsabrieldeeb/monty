@@ -4,14 +4,13 @@
 #include "monty.h"
 
 /**
- * push_function - push an integer to the stack
+ * push - push an integer to the stack
  * @stack: a double pointer to the stack itself
  * @line_number: line number in the file
  *
  * Return: void
 */
-
-void push_function(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	int value;
 	char *argument;
@@ -38,9 +37,31 @@ void push_function(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
+
 	pn->n = value;
 	pn->prev = *stack;
 	pn->next = NULL;
 	*stack = pn;
 
+}
+
+/**
+ * pall - printing all the elements of the stack
+ * @stack: a double pointer to the stack itself
+ * @line_number: line number in the file
+ *
+ * Return: void
+*/
+void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+	stack_t *current = *stack;
+
+	if (current == NULL)
+		return;
+	
+	while (current != NULL)
+	{
+		printf("%d\n", current->n);
+		current = current->prev;
+	}
 }
