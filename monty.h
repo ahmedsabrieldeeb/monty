@@ -40,12 +40,16 @@ typedef struct instruction_s
 /* from main.c */
 int extractInstruction(char *line, unsigned int line_num, stack_t **ps);
 
-/* from stack.c */
+/* from basic_stack.c */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **ps);
+
+
+/* from more_stack.c */
+void swap(stack_t **stack, unsigned int line_number);
 
 /* from checks.c */
 int is_number(char *arg);
