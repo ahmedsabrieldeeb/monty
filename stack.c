@@ -71,24 +71,6 @@ void pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 }
 
 /**
- * free_stack - freeing any memory allocated fro the stack
- * @ps: a double pointer to the stack itself
- *
- * Return: void
-*/
-void free_stack(stack_t **ps)
-{
-	stack_t *next;
-
-	while (*ps != NULL)
-	{
-		next = (*ps)->prev;
-		free(*ps);
-		*ps = next;
-	}
-}
-
-/**
  * pint - printing the top element in the stack
  * @stack: a double pointer to the stack itself
  * @line_number: line number in the file
@@ -106,3 +88,55 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", (*stack)->n);
 }
+
+/**
+ * pop - removing the top element from the satck
+ * @stack: a double pointer to the stack itself
+ * @line_number: line number in the file
+ *
+ * Return: void
+*/
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *deleted_node;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_stack(stack);
+		fclose(file);
+		exit(EXIT_FAILURE);
+	}
+
+	deleted_node = *stack;
+	if ((*stack)->prev == NULL)
+	{
+		*stack = NULL;
+		free(deleted_node);
+	}
+	else
+	{
+		*stack = (deleted_node)->prev;
+		(*stack)->next = NULL;
+		free(deleted_node);
+	}
+}
+
+/**
+ * free_stack - freeing any memory allocated fro the stack
+ * @ps: a double pointer to the stack itself
+ *
+ * Return: void
+*/
+void free_stack(stack_t **ps)
+{
+	stack_t *next;
+
+	while (*ps != NULL)
+	{
+		next = (*ps)->prev;
+		free(*ps);
+		*ps = next;
+	}
+}
+
