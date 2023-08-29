@@ -54,7 +54,8 @@ int extractInstruction(char *line, unsigned int line_num, stack_t **ps)
 {
 	instruction_t opcodes[] = {
 		{"push", push},
-		{"pall", pall}};
+		{"pall", pall},
+		{"pint", pint}};
 
 	char *word;
 	size_t i;
