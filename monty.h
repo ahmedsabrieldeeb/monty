@@ -51,6 +51,9 @@ void free_stack(stack_t **ps);
 /* from more_stack.c */
 void swap(stack_t **stack, unsigned int line_number);
 
+/* from maths_stack.c */
+void add(stack_t **stack, unsigned int line_number);
+
 /* from checks.c */
 int is_number(char *arg);
 void checkArguments(int num_args, char **list_args);
