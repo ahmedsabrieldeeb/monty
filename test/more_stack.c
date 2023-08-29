@@ -45,13 +45,13 @@ void swap(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * nod - do nothing
+ * nop - do nothing
  * @stack: a double pointer to the stack itself
  * @line_number: line number in the file
  *
  * Return: void
 */
-void nod(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
+void nop(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
 {
 	return;
 }

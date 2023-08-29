@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 int extractInstruction(char *line, unsigned int line_num, stack_t **ps)
 {
 	instruction_t opcodes[] = {
-		{"nod", nod}, {"push", push}, {"pall", pall}, {"pint", pint},
+		{"nop", nop}, {"push", push}, {"pall", pall}, {"pint", pint},
 		{"pop", pop}, {"swap", swap}, {"add", add}};
 
 	char *word;

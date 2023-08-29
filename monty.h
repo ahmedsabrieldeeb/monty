@@ -50,7 +50,7 @@ void free_stack(stack_t **ps);
 
 /* from more_stack.c */
 void swap(stack_t **stack, unsigned int line_number);
-void nod(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 
 
 /* from maths_stack.c */
